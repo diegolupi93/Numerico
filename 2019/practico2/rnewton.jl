@@ -11,11 +11,10 @@ function rnewton(fun,x0,err,mit)
         x_n = x_ant - f/fp
         append!(hx,x_ant)
         append!(hf,f)
-        if (abs(x_n-x_ant)/x_n < err) || abs(f) < err || f == 0
-            println("Converge")
-            # agrego el xn
-            append!(hx,x_n)
-            append!(hf,fun(x_n)[1])
+        if f == 0
+            return [hx,hf]
+        end
+        if (abs(x_n-x_ant)/x_n < err) || abs(f) < err
             break 
         end
     end
