@@ -5,8 +5,9 @@ function horn(coefs,x)
     for i = n-1:-1:1
         b = coefs[i] + b*x
     end
-    return b
+    return b 
 end
 
 
-horn([ 2 6 -5 1],2)
+a = horn([1 -5 6 2],2)
+println(a)
