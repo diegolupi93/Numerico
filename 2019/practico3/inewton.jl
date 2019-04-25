@@ -6,22 +6,20 @@ function prod_diff(x,list_x,i)
     return prod
 end
 
-function coeficientes(x,y)
-    n = length(x)
-    coef = zeros(0)
-    append!(coef,y[1])
-    m = 1
-    for i in 2:n
-        new_coef = y[i] - coef[1]
-        for j in 2:i-1
-            new_coef -= coef[j]*prod_diff(x[i],x,j)
-        end
-        new_coef = new_coef / prod_diff(x[m+1],x,m+1)
-        append!(coef,new_coef)
-        m += 1
-    end
-    return coef
+function diferencias_divididas(x,y)
+	n = length(x)
+	coef = zeros(n,n)
+	for i in 1:n
+		coef[1,i] = y[i]  
+	end
+	for j in 2:n
+		for i in 1:(n-j+1)
+			coef[j,i] = (coef[j-1,i+1]-coef[j-1,i])/(x[i+j-1]-x[i])
+		end
+	end
+	return coef
 end
+
 
 function inewton(x,y,z)
     m = length(z)
@@ -30,7 +28,7 @@ function inewton(x,y,z)
         println("arreglos de diferente longitud")
         return
     end 
-    a = coeficientes(x,y)
+    a = diferencias_divididas(x,y)#devuelve una matriz, y nosotros usamos el primer elemento de cada fila como nuestros coeficientes
     sum = 0
     W = zeros(0)
     for j in 1:m
@@ -39,11 +37,9 @@ function inewton(x,y,z)
             # z[j] es el punto a valuar
             # x es la lista de las entradas
             # y es la lista de los f(x)
-            sum += a[i]*prod(z[j],x,i)
+            sum += a[i,1]*prod_diff(z[j],x,i)
         end
         append!(W,sum)
     end
     return W
 end 
-
-
