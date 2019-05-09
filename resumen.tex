@@ -1,0 +1,79 @@
+\documentclass{article}
+\setlength{\parindent}{0cm}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amsthm,amssymb}
+\renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\begin{document}
+
+\section{Practico 1}\label{Practico-1}
+
+
+\subsection{Taylor}\label{Taylor}
+
+$f(x) = \sum\limits_{k=0}^{n} \frac{1}{k!} f^{(k)}(c)(x-c)^k+E_n(x)$ donde
+
+$E_n(x) = \frac{1}{(n+1)!} f^{(n+1)}(\xi)(x-c)^{n+1}$ con $\xi$ entre x y c
+
+ \vspace{5mm}
+\subsection{Error}\label{Error}
+
+Sean $\{ X_n \}$ y $\{ \alpha_n \}$, dos sucesiones distintas decimos que:
+
+$X_n = \mathcal{O}(\alpha_n)$, si existe $C > 0$ y $r \in \mathbb{N}$ tal que
+
+$|X_n| \leq C|\alpha_n|$, $\forall n \geq r$
+
+ \vspace{5mm}
+
+Decimos $f(x) = o(g(x)) \Longleftrightarrow \lim_{x \to m} \left|\frac{f(x)}{g(x)} \right| = 0$
+ \vspace{5mm}
+
+ Error absoluto = $\frac{|real-aproximado|}{|real|}$
+
+ Error relativo = $ |real - aproximado| $
+
+  \vspace{5mm}
+
+\section{Practico 2}\label{Practico-2}
+
+\subsection{Bisección}\label{Biseccion}
+
+$I = [x_0,x_1] \rightarrow a_0 = x_0$ y $b_0 = x_1$, ademas $c_0 =  \frac{a_0+b_0}{2}$, para poder interar debe cumplir
+$f(a_0)f(b_0) < 0$
+
+Algoritmo, sea $a = x_0$, $b = x_1$ y $c = \frac{a+b}{2}$
+
+Paso 1: Si $f(c) = 0 $, terminar, y c es la raíz, Si no, ir a Paso 2
+
+Paso 2: Si $signo(f(a)) = signo(f(c))$, entonces $a = c$ y $b = b$, si no $a = a$ y $b = c$ y voy a Paso 1
+
+  \vspace{5mm}
+
+Error método de Bisección
+
+$|r - c_0| \leq \frac{|b_0 - a_0|}{2}$, entonces $|r-c_n| \leq \frac{|b_n - a_n|}{2}$, por ende $|r-c_n| \leq \frac{|b_0 - a_0|}{2^{(n+1)}}$ 
+
+\vspace{5mm}
+
+\subsection{Newton}\label{Newton}
+
+Sea f derivable entonces, dado un $x_0$ obtenemos la siguiente sucesión
+
+$X_{n+1} = X_n - \frac{f(X_n)}{f'(X_n)}$
+
+Error del metodo
+
+$e_{n+1} = \frac{e_nf'(X_n)+f(X_n)}{f'(X_n)}$
+
+
+\vspace{5mm}
+
+
+
+
+
+
+
+\end{document}

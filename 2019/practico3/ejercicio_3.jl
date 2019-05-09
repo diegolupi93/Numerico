@@ -10,7 +10,7 @@ function eje_3(fun)
     y = []
     C = 24/25 #LinRange(1,5,101)
     for i in 1:101
-        append!(z, C+j/25)
+        append!(z, C+i/25)
     end
     for i in 1:5
         append!(x,i)

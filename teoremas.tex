@@ -7,33 +7,124 @@
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
 \begin{document}
 
-\section{Teoremas mas importantes de Númerico}\label{Teoremas}
+\section{Teoremas sin demostracion}\label{Teoremas}
 
-\subsection{Metodo Biseccion (convergencia)}\label{Metodo-Biseccion-(convergencia)}
 
-Sea f : [a,b] $ \rightarrow {\rm I\!R}$ continua en [a,b] con f(a)*f(b) $<$ 0
+\subsection{Teorema del valor intermedio para funciones continuas}\label{valor-intermedio}
 
-Sea [$a_0,b_0$], [$a_1,b_1$],....., [$a_n,b_n$] la sucesión generada por el método de bisección entonces
-$ \exists \lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n $ donde son iguales y tienden a una raíz de f.
+Sea f una funcion continua en [a,b] sea d entre f(a) y f(b) entonces existe $c \in [a,b]$ tal que$f(c)=d $
 
-Ademas, sea $ r \in [a,b] $ y $ C_n =  \left( \displaystyle\frac{a_n+b_n}{2} \right) $ tal que f(r) $ = $ 0
-tal que:
+ \vspace{5mm}
 
-$| r - C_n | \leq | 2^{-(n+1)}(b_0 - a_0) |$
+\subsection{Teorema del valor medio}\label{valor-medio}
+
+Sea f una funcion continua en [a,b] y derivable en (a,b). Entonces para cada $x,c \in [a,b]$ se cumple
+que $\left( \displaystyle\frac{f(x)-f(c)}{x-c} \right) = f'(\xi) $, para algún $\xi$ entre x y c
 
  \vspace{5mm}
 
 
 
-Dem: Veamos que existe límite para $ a_n $ y $ b_n $ cuando n tiende a infinito.
 
-Veamos $\{ a_n \}$ y $\{ b_n \}$ convergen.
+\subsection{Teorema del Taylor}\label{Taylor}
 
-Como sabemos que $\{ a_n \}$ es acotada superiormente, además es no decreciente, entonces existe
-$\lim_{n \to \infty} a_n$
+Sea $f \in C^{(n)}[a,b]$ y existe $f^{(n+1)}$ en (a,b), entonces $\forall x,c \in [a,b]$ se tiene:
 
-Luego como $\{ b_n \}$ es acotada inferiormente, además es no creciente, entonces existe
-$\lim_{n \to \infty} a_b$
+$f(x) = \sum\limits_{k=0}^{n} \frac{1}{k!} f^{(k)}(c)(x-c)^k+E_n(x)$ donde
+
+$E_n(x) = \frac{1}{(n+1)!} f^{(n+1)}(\xi)(x-c)^{n+1}$ con $\xi$ entre x y c
+
+
+ \vspace{5mm}
+
+\subsection{Metodo Newton Global}\label{Metodo-Newton-Global}
+
+Sea una función, tal que f'' continua, f convexa, creciente y tiene un raíz, entoncesraíz es único y el metodo de Newton
+converge $ \forall x_0 \in {\rm I\!R} $
+
+ \vspace{5mm}
+
+ \subsection{Unicidad  de conjunto linealmente independiente}\label{Metodo-Newton-Global}
+
+Si $\{ \phi_0(x),...,\phi_n(x) \}$ es un conjunto LI(linealmente independiente) en el espacio de polinomio de
+grado $\leq n$, entonces todo polinomio de grado $\leq n$ puede escribirse de manera única como combinación lineal
+de $\{ \phi_0(x),...,\phi_n(x) \}$
+
+ \vspace{5mm}
+
+ \subsection{Aproximación por mínimos cuadrados}\label{Metodo-Newton-Global}
+
+Si $\{ \phi_0,...,\phi_n \}$ es un conjunto ortogonal de funciones en [a,b] respecto de w,
+entonces la aproximación de cuadrados mínimos a f en [a,b] es
+
+$P(x) = \sum\limits_{k=0}^n a_k\phi_k(x)$, para $k = 0,...,n$, donde
+
+$a_k = \frac{\displaystyle\int_{a}^{b}w(x)f(x)\phi_k(x)dx}{\displaystyle\int_{a}^{b}w(x)(\phi_k(x))^2dx}$
+
+ \vspace{5mm}
+
+ \subsection{Relación de recurrencia}\label{Metodo-Newton-Global}
+
+ El conjunto de funciones polinomiales $\{ \phi_0,...,\phi_n \}$ definido de la siguiente forma ortogonal
+ en [a,b], respecto de la función de w(x)
+
+ $\phi_0(x) = 1 $, $\phi_1(x) = x -B_1$, $x \in [a,b]$, donde
+
+ $B_1 = \frac{\displaystyle\int_{a}^{b}w(x)x(\phi_0(x))^2dx}{\displaystyle\int_{a}^{b}w(x)(\phi_0(x))^2dx}$,
+
+  \vspace{5mm}
+
+ Para $k \geq 2$
+
+ $\phi_k(x) = (x-B_k)\phi_{k-1}(x)-C_k\phi_{k-2}(x)$, $x \in [a,b]$, donde
+
+$B_k = \frac{\displaystyle\int_{a}^{b}w(x)x(\phi_{k-1}(x))^2dx}{\displaystyle\int_{a}^{b}w(x)(\phi_{k-1}(x))^2dx}$, y
+
+$C_k = \frac{\displaystyle\int_{a}^{b}w(x)x(\phi_{k-2}(x))^2dx}{\displaystyle\int_{a}^{b}w(x)(\phi_{k-2}(x))^2dx}$
+
+
+ \vspace{5mm}
+
+
+ \subsection{Corolario}\label{Metodo-Newton-Global}
+
+Para todo $n > 0$ el conjunto de funciones gemeradas en el teorema de Relación de recurrencias(anterior) es LI en [a,b]
+y $\displaystyle\int_{a}^{b}w(x)\phi_n(x)\phi_k(x)dx = 0$ con $k < n$
+
+
+ \vspace{5mm}
+
+
+
+
+
+\section{Teoremas con demostracion}
+
+\subsection{Metodo Biseccion (convergencia)}\label{Metodo-Biseccion-(convergencia)}
+
+Si [$a_0,b_0$], [$a_1,b_1$],....., [$a_n,b_n$],.... denotan los sucesivos intervalos del método de bisección, entonces
+$ \exists \lim_{n \to \infty} a_n, \lim_{n \to \infty} b_n $ donde son iguales representan una raíz de f.
+
+Si $  C_n =  \left( \displaystyle\frac{a_n+b_n}{2} \right) $ y $r = \lim_{n \to \infty} C_n$ entonces
+$\frac{a_n+b_n}{2}$
+
+$| r - C_n | \leq | \frac{1}{2^{(n+1)}}(b_0 - a_0) |$
+
+ \vspace{5mm}
+
+
+Dem: Si $[a_0,b_0],[a_1,b_1],....$ son los intervalos del algoritmo de bisección. Entonces
+
+(1) $a_0 \leq a_1 \leq ... \leq b_0 $
+
+(2) $b_0 \leq b_1 \leq ... \leq a_0 $
+
+(3) $b_{n+1}-a_{n+1} = \frac{1}{2}(b_n-a_n)$
+
+
+Como sabemos que $\{ a_n \}$ es acotada superiormente, además es no decreciente, entonces es convergente (1)
+
+Luego como $\{ b_n \}$ es acotada inferiormente, además es no creciente, entonces es convergente (2)
 
 Ademas
 
@@ -78,199 +169,142 @@ $\left| r - C_n \right| \leq \left| \left( \displaystyle\frac{1}{2} \right)(b_{n
 \subsection{Metodo Newton (convergencia)}\label{Metodo-Newton-(convergencia)}
 
 Sea f : ${\rm I\!R} \rightarrow {\rm I\!R}$ una funcion tal que f'' es continua y f'(r) $ \not= 0$ donde r es raíz de f, 
-entonces existe un $ X_0$ perteneciente a un entorno $ [r-\delta, r+\delta] $ de r tal que el método de Newton converge. Ademas
+entonces existe $ \delta$ tal que, si el punto inicial de método de Newton $X_0$ satisface $ |r-X_0| \leq \delta $, luego todas las aproximaciones
+generadas por el algoritmo$\{X_n\}$ satisfacen $|r-X_n| \leq \delta$, la sucesión $\{X_n\}$ converge a r y la convergencia es cuadrática.
 
-$\left| X_{n+1} - r  \right | \leq C \left | X_n -r  \right |^2 $ (convergencia cuadrática)
+$\left| X_{n+1} - r  \right | \leq C(\delta) \left | X_n -r  \right |^2 $ (convergencia cuadrática)
 
 \vspace{5mm}
 
 
-Dem: Sea $ X_n - r = e_n $(error en la etapa n)
+Dem: Sea $e_n = r - X_n $(error en la etapa n)
 
-Necesitamos ver que en el método de Newton converge y además que lo hace cuadráticamente, pero es lo mismo que ver
+ En la etapa n+1, tenemos: 
 
-$ \lim_{n \to \infty} e_n = 0 $ 
+ $ e_{n+1} = r - X_{n+1} = r - \left(X_n - \displaystyle\frac{f(X_n)}{f'(X_n)} \right)  = r - X_n +\displaystyle\frac{f(X_n)}{f'(X_n)}
+ = e_n + \displaystyle\frac{f(X_n)}{f'(X_n)}$
 
- $\{ e_n \} \to 0$, con $ n \to \infty $
-
- $\{ X_n \} \to 0$, con $ n \to \infty $ 
-
- Luego queremos llegar a algo de la forma $ \left| e_{n+1}  \right | \leq \left| e_{n}  \right |^2 $.
-
- Para esto analizamos
-
- $ e_{n+1} = X_{n+1}-r = X_n - r - \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) $
-
- $ = e_n - \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) = \left( \displaystyle\frac{e_nf'(X_n)-f(X_n)}{f'(X_n)} \right) $ 
+ $ =  \left( \displaystyle\frac{e_nf'(X_n)+f(X_n)}{f'(X_n)} \right) $(1)
 
  \vspace{5mm}
 
- Por otro lado $ e_n = X_n -r $, entonces $ r = X_n - e_n $
+ Sabemos por Taylor que f alrededor de $X_n$ tenemos:
 
- (1) Taylor centrado en $ X_n $.
- Entonces tenemos
 
- $ 0 = f(r) = f(X_n-e_n) =^{(1)} f(X_n) + f'(X_n)(-e_n) + \left( \displaystyle\frac{1}{2!} \right)f''(\xi)(-e_n)^2 $, con $\xi$ entre r y $X_n$
+ $f(X_n+h)=f(X_n)+f'(X_n)h+\frac{1}{2}f''(\xi_n)h$, luego si tomamos $h=e_n$ obtenemos
 
- Entonces $ \left( \displaystyle\frac{1}{2!} \right)f''(\xi)e_n^2 = f'(X_n)e_n -f(X_n)  $
 
- Luego con nuestra formula anterior obtenemos
+ $X_n+h = X_n+e_n = X_n + (r-X_n)$, por ende
 
- $ e_{n+1} = \left( \displaystyle\frac{f''(\xi){e_n}^2}{2f'(X_n)} \right) $
 
- Queremos acortar esto para ello llamamos
+ $0 = f(r) = (f(X_n) + f'(X_n)e_n + f''(\xi_n)e_n^2)$, $\xi_n$ entre x y r
 
- $C(\delta) = \left( \displaystyle\frac{\max_{\{|x-r| \leq \delta\}} |f''(x)|}{\min_{\{|x-r| \leq \delta\}}|f'(x)|} \right)$, con $ \delta > 0 $
+ Entonces $f(X_n)+f'(X_n)e_n = -\frac{1}{2}f''(\xi_n)e_n^2 $, (2), de (1) y (2) se obtiene:
 
- Para ello tenemos nuestras hipotesis f'' es continua y $f'(r) \not= 0 $
 
- Ahora elegimos un $ \delta  $ tal que $ \delta C(\delta) < 1 $
+ $e_{n+1} = -\frac{1}{2}\frac{f''(\xi_n)}{f'(X_n)}e_n^2$ (3)
 
- Tenemos $ X_0 \in$ al entorno  $|X_0 - r| \leq \delta $, debemos ver que los $X_n$ siguen permaneciendo al entorno.
+\vspace{5mm}
 
- $ |X_1-r| \leq |e_1| \leq C(\delta)|e_0|^2 = |e_0||e_0|C(\delta) \leq \delta C(\delta)|e_0| \leq |e_0| \leq \delta $
+ Para acotar (3), definimos
 
- Si continuamos de esta manera notamos que los $X_n$ permanecen al entorno, luego
 
- $ \{X_j\} \in [r-\delta, r+\delta]$, para cada $j=0,1,2,.....$
+ $C(\delta) = \frac{1}{2}\left( \displaystyle\frac{\max_{\{|x-r| \leq \delta\}} |f''(x)|}{\min_{\{|x-r| \leq \delta\}}|f'(x)|} \right)$
 
- Ahora llamamos $\zeta = \delta C(\delta)$ veamos que $|e_n| \rightarrow 0$, donde $ n \rightarrow \infty$
+ \vspace{5mm}
 
- Por lo visto anteriormente tenemos
+ Como f' y f'' son continuas alrededor de r, luego $|f'(x)|$ y $|f''(x)|$ alcanzan su mínimo y su máximo, respectivamente
+ en el intervalo cerrado y acotado $[r-\delta,r+\delta]$. Luego dado $\delta > 0$, para todo x y $\xi$ talque $|x-r \leq \delta|$
+ y $|\xi-r| \leq \delta$.
 
- $e_1 \leq \zeta|e_0| $
 
- $e_2 \leq \zeta|e_1| \leq \zeta^2|e_0| $
+ Se tiene que $\frac{1}{2}\frac{f''(\xi)}{f'(x)} \leq C(\delta)$
 
-.
+ \vspace{5mm}
 
-.
+ Ahora elegimos un $ \delta  $ tan pequeño tal que $ \delta C(\delta) < \rho $
 
-.
+Esto es posible si $\delta \rightarrow 0$, $C(\delta) \rightarrow \frac{1}{2}\frac{f''(r)}{f'(r)}$, bien
+definido, pues por hipótesis,
 
- $e_n \leq \zeta^n|e_0| $, como $ \zeta < 1$, entonces $|e_n \rightarrow 0| $, donde $ n \rightarrow \infty $ $\blacksquare$
+ $f'(r) \not= 0$, por lo tanto, $\delta C(\delta) \rightarrow 0$
+
+ Supongamos que $X_n$ es tal que $|e_n| = |X_n-r| \leq \delta$
+
+ Como $\xi_n$ esta entre $X_n$ y r, $|\xi_n-r| \leq \delta$
+
+ Por def de $C(\delta)$ tenemos $\frac{1}{2}\frac{f''(\xi_n)}{f'(X_n)} \leq C(\delta)$. Luego por (3)
+
+ \vspace{5mm}
+
+ $|e_{n+1}| = \frac{1}{2}\frac{|f''(\xi_n)|}{|f'(X_n)|}e_n^2 \leq C(\delta)e_n^2 = C(\delta)|e_n||e_n| \leq C(\delta)\delta |e_n| \leq \rho|e_n|$
+
+ \vspace{5mm}
+
+ Luego $X_{n+1}-r = |e_{n+1}| \leq \rho|e_n| < |e_n| \leq \delta$
+
+ Por último si $X_0$ es talque $|X_0-r| \leq \delta$, luego por lo anterior $|e_n| \leq \rho|e_{n+1}| \leq ... \leq \rho^n|e_0|$
+
+ Como $0<\rho<1$ y $e_0 \leq \delta$, $\lim_{n \to \infty} f^n = 0$ , $\lim_{n \to \infty} |e_n| = 0$ y $\lim_{n \to \infty} X_n = r$ $\blacksquare$
+
+
+ 
 
 \vspace{10mm}
 
-\subsection{Metodo Newton Global}\label{Metodo-Newton-Global}
+\subsection{Propiedades de Punto Fijo}\label{Punto}
 
-Sea una función, tal que f'' continua, f convexa, creciente y tiene un cero, entonces el cero es único y el metodo de Newton
-converge $ \forall x_0 \in {\rm I\!R} $
+Sea g continua en [a,b]
 
-\vspace{5mm}
+(1) si $g(a) \in [a,b]$ y $g(b) \in [a,b]$ entonces existe $r \in [a,b]$ tal que $g(r) = r$  
 
-Dem: 
-
-f es convexa por lo tanto f''(x) $ > 0 \forall x \in {\rm I\!R}$, ademas
-
-f es creciente por lo tanto f'(x) $ > 0 \forall x \in {\rm I\!R}$, dando como resultado
-
-$e_n > 0$  $ \forall n \in \{ 0 \}\cup \mathbb{N}$, ya que
-
-$e_{n+1} = \left( \displaystyle\frac{f''(\xi){e_n}^2}{2f'(X_n)} \right)  $
-
-Ahora como $e_n>0$, entonces $ X_n > r $ $ \forall n$, luego
-
-$f(X_n)>f(r)=0$
-
-Luego $0< X_{n+1}-r = X_n - \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) -r $
-
-Entonces $e_{n+1} = e_n - \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) $, ya que $ \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) > 0$ 
-
-\vspace{5mm}
-
-Obtenemos $e_{n+1} < e_n \Longleftrightarrow X_{n+1}-r < X_n -r \Longleftrightarrow X_{n+1} < X_n $
-
-Entonces tenemos que $\{ e_n \}$ y $\{ X_n \}$ son decrecientes y acotados inferiormente, por lo tanto existe limite cuando $ n \rightarrow \infty$
-
-Sea $e^*$ tal que $\lim_{n \to \infty} e_n  = e^*$
-
-Sea $x^*$ tal que $\lim_{n \to \infty} X_n  = x^*$
-
-Tenemos $e_{n+1} = e_n - \left( \displaystyle\frac{f(X_n)}{f'(X_n)} \right) $
-
-si tomamos el limite cuando n tiende a infinito obtenemos
-
-$e^* = e^*- \left( \displaystyle\frac{f(x^*)}{f'(x^*)} \right) $, dando como resultado $  \left( \displaystyle\frac{f(x^*)}{f'(x^*)} \right) = 0$
-
-Por ende $f(x^*) = 0$, entonces $x^* = r$, converge a la raíz $\blacksquare$
-
-\vspace{10mm}
-
-\subsection{Teorema de Aplicación de Funcion Contractiva}\label{Teorema-de-Funcion-Contractiva}
-
-Def contractiva: Sea F : ${\rm I\!R} \rightarrow {\rm I\!R}$ se dice contractiva en A(conjunto), si existe $0<\lambda<1$ tal que
-
-$|F(x)-F(y)| \leq \lambda |x-y|$ $\forall x,y \in A$
-
-\vspace{5mm}
-
-Teorema: Sea F: C $\rightarrow C$  donde $C \subset {\rm I\!R}$ es cerrado y F es contractiva entonces F tiene un único punto fijo y es limite de toda sucesión
-$X_{n+1} = F(X_n)$, para un $X_0 \in C$  
+(2) si ademas existe g' tal que $|g(x)| \leq k$ $\forall x \in (a,b)$ y para algún $k \in (0,1)$, entonces el punto fijo 
+es único en (a,b) $\forall x \in (a,b)$
 
 \vspace{5mm}
 
 Dem:
 
-(1) Definición de punto fijo
+(1) Si $g(a) = a$ ó $g(b) = b$, entonces nada que probar, si esta no existe,
 
-(2) F contractiva
+$g(a)>a$ y $g(b)<b$. Definimos $h(x) = g(x)-x$, h continua, en [a,b], tenemos
 
-(3) Como F es contractiva, entonces F es continua
-
-(4) Serie geometrica
-
-Analicemos la unicidad
-
-Supongamos que hay 2 puntos fijos $x^*$y $y^*$, entonces
-
-$|x^*-y^*| =^{(1)} |F(x^*)-F(y^*)| \leq^{(2)} \lambda|x^*-y^*| $, entonces obtenemos
-
-$|x^*-y^*|  \leq \lambda|x^*-y^*| $, con $0<\lambda<1$, entonces solo puede suceder si
-
-$x^*-y^* = 0$ por lo tanto $x^*=y^*$
+$h(a) = g(a)-a > 0$, $h(b) = g(b)-b < 0$, por lo tanto por Teorema de Valor Intermedio sabemos que
+existe $ r \in (a,b)$ tal que $h(r)=0$, entonces $g(r) = r$
 
 \vspace{5mm}
 
-Veamos que $\{ X_n \} \rightarrow x^*$, con $ n \rightarrow \infty $, supongamos que existe limite, entonces
+(2) Supongamos que existen p y q en [a,b] tal que $g(p) = p$, $g(q) = q$, con $p\not=q$
 
-$X_{n+1} = F(X_n)$
+Por Teorema de Valor Medio, $g(p)-g(q) = g'(\xi)(p-q)$, con $\xi$ entre p y q, luego
 
-Sea $x^* = \lim_{n \to \infty} F(X_n) =^{(3)} F(x^*)$, es un punto fijo
-
-\vspace{5mm}
-
-Veamos la existencia de este limite
-
-$|X_n - X_{n-1}| = |F(X_{n-1}) - F(X_{n-2}) | \leq \lambda|X_{n-1}-X_{n-2}| $
-
-$= \lambda|F(X_{n-2}) - F(X_{n-3}) | \leq  \lambda^2|X_{n-2}-X_{n-3}| \leq ... \leq \lambda^{n-1}|X_{1}-X_{0}|$
-
-Ahora
-
-$X_n = X_0 + (X_1-X_0)+...+(X_n-X_{n-1}) = \sum\limits_{k=1}^{n} (X_k - X_{k-1})+X_0$
-
-\vspace{5mm}
-
-Quiero ver que exista limite en $\sum\limits_{k=1}^{n} (X_k - X_{k-1})$
-
-$\sum\limits_{k=1}^{n} (X_k - X_{k-1}) \leq \sum\limits_{k=1}^{n} \lambda^{k-1}|X_1-X_0| = |X_1-X_0|\sum_{k=1}^{n} \lambda^{k-1}$ 
-
-\vspace{5mm}
-
-Luego si tomamos el limite cuando $ n \rightarrow \infty $, tenemos que
-
-
-$\sum\limits_{k=1}^{\infty} (X_k - X_{k-1}) \leq \sum\limits_{k=1}^{\infty} \lambda^{k-1} =^{(4)} \left( \displaystyle\frac{1}{1-\lambda} \right) $
-
-Entonces converge por el criterio de comparación para series
-
-\vspace{5mm}
-
-Luego existe un $x^*$ tal que $\lim_{n \to \infty} X_n = x^*$, por lo anterior vimos que $x^*$ es punto fijo de F $\blacksquare$
-
+$|p-q| = |g(p)-g(q)| =|g'(\xi)||(p-q)| \leq k|p-q|<|p-q|$, absurdo, entonces $p=q$$\blacksquare$
 
 \vspace{10mm}
+
+\subsection{Convergenca de Punto Fijo}\label{Punto-f}
+
+Sea g una función tal que $g(x) \in [a,b]$ $\forall x \in [a,b]$, ademas supongamos 
+$|g'(x)| < k$ con $0 < k < 1$ $\forall x \in (a,b)$. Entonces para cualquier $p_0 \in [a,b]$,
+la sucesión definida por $p_n = g(p_{n-1})$, para $n \geq 1$, converge al unico punto fijo en [a,b]
+
+\vspace{5mm}
+
+Dem:
+
+Por el teorema anterior sabemos que existe punto fijo p en [a,b]. Como la g transforma [a,b] en si mismo,
+la sucesión $\{ p_n \}_n$ esta bien definida $\forall n \geq 0$ y $p_n \in [a,b] \forall n$.
+
+Veamos la convergencia:
+
+$p_n-p= g(p_{n-1})-g(p) = |g'(\xi_n)||p_{n-1}-p| \leq k|p_{n-1}-p|$, luego
+
+$|p_n-p| \leq k|p_{n-1}-p| \leq .... \leq k^n|p_0-p|$, como $ 0 < k < 1$, entonces
+
+$\lim_{n \to \infty} |p_n-p| = 0$ $\blacksquare$
+
+\vspace{10mm}
+
 
 \subsection{Unicidad Polinomio Interpolante}\label{Unicidad-Polinomio-Interpolante}
 
@@ -284,13 +318,17 @@ Dem:
 
 (1) Interpolación
 
-Veamos unicidad, para ello supongamos que existen dos polinomios P, Q de grado $\leq n$ que interpolan
-a los puntos $ x_0,...,x_n $. Llamamos
+Veamos unicidad, para ello supongamos que existen dos polinomios de grado $\leq n$ tal que $P_n(x_i) = y_i$ y 
+$Q_n(x_i) = y_i$, para $i=0,...,n$. Sea 
 
-$r \equiv P-Q) $, luego $gr(r) \leq n$
+\vspace{5mm}
 
-Pero $r(x_i) = P(x_i)-Q(x_i) = Y_i - Y_i =^{(1)} 0 $, para $i=0,...,n$, entonces $r$ tiene $n+1$ raices, pero como
-es un polinomio de grado $\leq n$, por lo tanto $r \equiv 0$, entonces $P(x) = Q(x)$
+$h_n(x) = P_n(x)-Q_n(x) $, luego es un polinomio de grado $\leq n$
+
+Luego se observa que $h_n(x) = P_n(x)-Q_n(x) = 0$ con $i=0,...,n$, pero como $h_n$ es un polinomio con (n+1) raíces,
+entonces
+
+ $h_n(x) = 0 $ $\forall x$, por lo tanto $P_n(x) = Q_n(x) $ $\forall x$
 
 \vspace{5mm}
 
@@ -304,7 +342,7 @@ $\ell_i(x) = \left( \displaystyle\frac{(x-x_0)(x-x_1)...(x-x_{i-1})(x-x_{i+1})..
  Como sabemos que
 
  $$
-\ell_i(x_j))=
+\ell_i(x_j)=
 \begin{cases}
 1 & j=i\\
 0 & j\not=i
@@ -315,48 +353,41 @@ Luego  $P(x) = \sum\limits_{i=0}^n Y_i\ell_i(x)$
 
 Por lo tanto $P(x_i) =\sum\limits_{i=0}^n Y_i\ell_i(x_i) = Y_i $
 
-\vspace{5mm}
+$\blacksquare$
 
-Veamos la forma de Newton
 
-Llamamos $P_{k-1}(x)$ al polinomio que interpola a los puntos $x_0,...,x_{k-1}$
 
-$P_k(x)= P_{k-1}(x_i)+c(x-x_0)...(x-x_{k-1}) $
 
-$P_k(x_i)= P_{k-1}(x_i)+c(x_i-x_0)...(x_i-x_{k-1}) = Y_i $
-
-Luego, $P_k(x_k) = P_{k-1}(x_k)+c(x_k-x_0)...(x_k-x_{k-1})$, entonces $c = \left( \displaystyle\frac{Y_k-P_{k-1}(x_k)}{(x_k-x_0)...(x_k-x_{k-1)}} \right)$
-
-Por lo tanto
-
-$P_k(x) = \sum\limits_{i=0}^k c_i\prod\limits_{\substack{j=0}}^{i-1} ( x-x_i) $, donde $c_i = \left( \displaystyle\frac{Y_i-P_{i-1}(x_i)}{(x_i-x_0)...(x_i-x_{i-1)}} \right)$ $\blacksquare$
 
 \vspace{10mm}
 
 \subsection{Error Polinomio Interpolante}\label{Error-Polinomio-Interpolante}
 
-Sea f : ${\rm I\!R} \rightarrow {\rm I\!R}$ y sea P el polinomio que interpola a f en los puntos $x_0,...,x_n$, donde f tiene derivada n+1-esima, entonces
+Sea  $f \in C^{n+1}(a,b)$ y P un polinomio de grado$\leq n$ que interpola a f en (n+1) puntos distintos 
+$x_0,...,x_n$ en [a,b]. Entonces para cada $x \in [a,b]$ existe $\xi \in (a,b)$ tal que
 
-$f(X)-P(x)= \displaystyle\frac{f^{(n+1)}(C_x)}{(n+1)!} \prod\limits_{\substack{i=0}}^{n} ( x-x_i)$
+$f(X)-P(x)= \displaystyle\frac{1}{(n+1)!} f^{(n+1)}(\xi) \prod\limits_{\substack{i=0}}^{n} ( x-x_i)$
 
 Dem:
 
 Si $x=x_i$
 
-$0 = f(x_i)-P(x_i) = \displaystyle\frac{1}{(n+1)!} f^{(n+1)}C_i\prod\limits_{\substack{j=0}}^{n} ( x_i-x_j) = 0$, ya que $i \in \{0,...,j,...,n\}$, luego vale para $x=x_i$
+$0 = f(x_i)-P(x_i) = \displaystyle\frac{1}{(n+1)!} f^{(n+1)}\xi\prod\limits_{\substack{j=0}}^{n} ( x_i-x_j) = 0$, ya que $i \in \{0,...,j,...,n\}$, luego vale para $x=x_i$
 
 
 Si $x\not=x_i$
 
 Sea $w(t)=\prod\limits_{\substack{i=0}}^{n} (t-x_i)$
 
-$\phi \equiv f-P - \lambda w$
+$C = \frac{f(x)-p(x)}{w(x)}$, (constante, con $w(t) \not= 0$)
 
-$\phi(t)=f(t)-P(t) - \lambda w(t)$, como $\phi(x)=0$, entonces $\lambda = \displaystyle\frac{f(x)-P(x)}{w(x)}$
+$\phi(t) = f(t)-P(t) - Cw(t)$ (función en t), Por lo tanto
 
-Luego como $\phi(x_i) = 0$ para cada $i\in\{ 0,...,n \}$ y $\phi(x)=0$, tenemos n+2 raices
+Luego como $\phi(x_i) = 0$ para cada $i\in\{ 0,...,n \}$ y 
 
-Ahora por el toerema de roole tenemos
+$\phi(x) = f(x)-P(x)-Cw(x) = f(x) - P(x) - \frac{f(x) - P(x)}{w(x)}$, luego 
+
+\vspace{5mm}
 
 $\phi'$ tiene al menos n+1 raices en [a,b]
 
@@ -368,189 +399,203 @@ $\phi''$ tiene al menos n raices en [a,b]
 
 .
 
-$\phi^{(n+1)}$ tiene al menos una raíz en [a,b], a este lo llamamos $C_x$
+$\phi^{(n+1)}$ tiene al menos una raíz en [a,b]
 
-Luego
+\vspace{5mm}
 
-(1)$gr(P) = n$ entonces $P^{(n+1)}=0$
+Entonces sea $\xi$ esa raíz de $\phi^{(n+1)}, \xi \in (a,b)$
 
-(2)Como $w(t)=\prod\limits_{\substack{i=0}}^{n} (t-x_i)$, entonces $ w(t) = t^{(n+1)} + t^n(-x_0)+...+t^n(-x_n)+...+((-x_0)...(-x_n)) $
-por lo tanto $w(t)^{(n+1)}=(n+1)(n)...1t=(n+1)!t$, entonces $w^{(n+1)} \equiv (n+1)!$
+Asi
 
-$\phi^{(n+1)} \equiv f^{(x+1)} - P^{(n+1)}-\lambda w^{(n+1)} \equiv f^(n+1) - \lambda(n+1)! $, por (1) y (2)(1 y 2 no hace falta aclararlo, lo pongo para que sepan como se llega al resultado)
+$(0 = \phi^{(n+1)}(\xi) = f^{(n+1)}(\xi)-P^{(n+1)}(\xi) - Cw^{(n+1)}(\xi))$ (*)
 
-Luego
+\vspace{5mm}
 
-$f^{(n+1)}(C_x)-\lambda (n+1)! = 0$
+Como $w(t)=\prod\limits_{\substack{i=0}}^{n} (t-x_i)$, entonces $ w(t) = t^{(n+1)} + Q(x) $ $gr(Q) \leq n$
 
-$f^{(n+1)}(C_x)- \left[ \displaystyle\frac{f(x)-P(x)}{w(x)} \right] (n+1)! = 0$
+Luego $w(t)^{(n+1)}=(n+1)!$, entonces $w^{(n+1)}(\xi) = (n+1)!$
 
-$f^{(n+1)}(C_x) = (f(x)-P(x))\left( \displaystyle\frac{(n+1)!}{w(x)} \right)   $
+\vspace{5mm}
 
-$f^{(n+1)}(C_x)\left( \displaystyle\frac{w(x)}{(n+1)!} \right) = f(x)-P(x)   $
+Finalmente de (*)
 
-$\left( \displaystyle\frac{f^{(n+1)}(C_x)}{(n+1)!} \right)\prod\limits_{\substack{i=0}}^{n} (x-x_i)  = f(x)-P(x)   $$\blacksquare$
+$0 = f^{(n+1)}(\xi)- C(n+1)! = f^{(n+1)}(\xi) - \frac{f(x) - P(x)}{w(x)}(n+1)! = 0$
+
+$f(x) - P(x) = \frac{f^{(n+1)}(\xi)}{(n+1)!}\prod\limits_{\substack{i=0}}^{n} ( x-x_i)$
+$\blacksquare$
 
 \vspace{10mm}
 
-\subsection{Relacion recursiva de Diferencias Divididas}\label{Relacion-recursiva-de-Diferencias-Divididas}
+\subsection{Diferencias Divididas}\label{Relacion-recursiva-de-Diferencias-Divididas}
 
-Sea $P_n$ el polinomio de grado $\leq n$ que interpola a $x_0,...,x_n$ usando el polinomio interpolante de Newton
+Las diferencias divididas satisfacen la ecuación $f[x_0,...,x_n] = \frac{f[x_1,...,x_n] - f[x_0,...,x_{n-1}]}{x_n - x_0}$
 
-$P_n(x) = \sum\limits_{i=1}^{n} c_i \prod\limits_{j=0}^{i-1}(x-x_j)$, luego
-
-$c_i = \left( \displaystyle\frac{Y_i - P_{i-1}(x_i)}{(x-x_0)...(x-x_{i-1})} \right)$, entonces
-
-$c_i = f[x_0,...,x_i] $, ahora tenemos
-
-$f[x_0,...,x_n] = \displaystyle\frac{f[x_1,...,x_n]-f[x_0,...,x_{n-1}]}{x_n-x_0} $
+\vspace{5mm}
 
 Dem:
 
-Sea  $P_k$ el polinomio de grado k que interpola a los puntos $x_0,...,x_k$, y sea Q el polinomio que interpola
-a $x_1,...,x_n$, luego
+Sea $P_{n-1}$ el polinomio que interpola a f en $x_0,...,x_{n-1}$, con $gr(P_{n-1}) \leq n-1$
 
-$P_n(x) = Q(x) + \displaystyle\frac{(x-x_n)}{(x_n-x_0)}[Q(x)-P_{n-1}(x)]$
+Sea Q el polinomio que interpola a f en $x_1,...,x_n$, con $gr(Q) \leq n-1$
 
-Debemos ver primero que $P_n(x_i) = Y_i$, con $i =0,...,n$
-
-
-$P_n(x_0)=Q(x_0)+\displaystyle\frac{(x_0-x_n)}{(x_n-x_0)}[Q(x_0)-P_{n-1}(x_0)]$
+Sea $P_n$ el polinomio dado por $P_n(x) = (Q(x)+\frac{x-x_n}{x_n-x_0}(Q(x) - P_{n-1}(x))$)(*)
 
 \vspace{5mm}
 
-$=Q(x_0)+(-1)[Q(x_0)-P_{n-1}(x_0)]=P_{n-1}(x_0)=Y_0$
+Veamos que $P_n$ interpola a f en $x_0,...,x_n$, con $gr(P_n) \leq n$
+
+Para $i = 1,...,n-1$
+
+$P_n(x_i) = f(x_i)$, ya que $Q(x_i) + \frac{x_i-x_n}{x_n-x_0}(Q(x_i)-P_{n-1}(x_i))$,
+
+como $Q(x_i) = f(x_i) = P_{n-1}(x_i)$, entonces $P_n = Q(x_i)$
 
 \vspace{5mm}
 
-Si $x=x_n$
+Si $i = 0$
+
+$P_n(x_0) = f(x_0)$, ya que $Q(x_0)+\frac{x_0-x_n}{x_n-x_0}(Q(x_0)-P_{n-1}(x_0))$
+
+Como $\frac{x_0-x_n}{x_n-x_0} = -1$, entonces
+
+$Q(x_0)+\frac{x_0-x_n}{x_n-x_0}(Q(x_0)-P_{n-1}(x_0)) = P_{n-1}(x_0) = f(x_0)$  
 
 \vspace{5mm}
 
-$P_n(x_0)=Q(x_n)+\displaystyle\frac{(x_n-x_n)}{(x_n-x_0)}[Q(x_0)-P_{n-1}(x_n)] = Q(x_n)=Y_n$
+Si $i = n$
+
+$P_n(x_n) = f(x_n)$, ya que $Q(x_n)+\frac{x_n-x_n}{x_n-x_0}(Q(x_n)-P_{n-1}(x_n))$
+
+Como $\frac{x_n-x_n}{x_n-x_0} = 0$, entonces
+
+$Q(x_n)+\frac{x_n-x_n}{x_n-x_0}(Q(x_n)-P_{n-1}(x_n)) = Q(x_n) = f(x_n)$ 
 
 \vspace{5mm}
 
-Si $x=x_i$, con $i=1,...,n-1$
+Luego $P_n$ y (*) son pol de grado $\leq n$ que interpola a f en los (n+1) puntos $x_0,...,x_n$,
+por unicidad del polinomio interpolante, $P_n$ y (*) son los mismos polinomios.
 
 \vspace{5mm}
 
-$P_n(x_i)=Q(x_i)+\displaystyle\frac{(x_i-x_n)}{(x_n-x_0)}[Q(x_i)-P_{n-1}(x_i)] = Q(x_i)=Y_i$, ya que
+Veamos cual es el coeficiente de $x^n$, como
 
-\vspace{5mm}
+$P_n(x) = Q(x)+\frac{x-x_n}{x_n-x_0}(Q(x) - P_{n-1}(x))$, tenemos
 
- $[Q(x_i)-P_{n-1}(x_i)]=[Y_i-Y_i]=0$
+$f[x_0,...,x_n] = \frac{f[x_1,...,x_n] - f[x_0,...,x_{n-1}]}{x_n - x_0}$
 
-\vspace{5mm}
 
-Ahora veamos que
-
-$f[x_0,...,x_n]$ es el coeficiente del monomio de grado n de $P_n$
-
-$f[x_1,...,x_n]$ es el coeficiente del monomio de grado n-1 de $Q_n$
-
-$f[x_0,...,x_{n-1}]$ es el coeficiente del monomio de grado n-1 de $P_{n+1}$
-
-Luego como $gr(P_n)=n$ y
-
-$P_n(x) = Q(x) + (x-x_n)[Q(x)-P{n-1}(x)]\displaystyle\frac{1}{x_n-x_0}$
-
-Entonces $Q(x) + (x-x_n)[Q(x)-P{n-1}(x)]\displaystyle\frac{1}{x_n-x_0}$ es de grado n, por lo tanto
-
-$f[x_0,...,x_n] = \displaystyle\frac{f[x_1,...,x_n]-f[x_0,...,x_{n-1}]}{x_n-x_0} $$\blacksquare$
+$\blacksquare$
 
 
 \vspace{10mm}
 
-\subsection{Permutacion De Diferencias Divididas}\label{Permutacion-De-Dif-Divididas}
 
-$f[x_0,...,x_n] = f[z_0,...,z_n]$, donde $z_0,...,z_n$ son permutaciones de los puntos $x_0,...,x_n$
+
+
+\subsection{Punto que no pertenece a los puntos de interpolación}\label{Permutacion-De-Dif-Divididas}
+
+Sea P el polinomio de grado $\leq n$ que interpola f en los (n+1) nodos $x_0,...,x_n$(distintos). Si t es
+un punto distinto de los nodos, entonces 
+
+$f(t) - P(t) = f[x_0,...,x_n,t]\prod\limits_{\substack{i=0}}^{n} (t-x_i)$
+
+
+\vspace{5mm}
 
 Dem:
+Sea Qel polinomio de grado $\leq n+1$ que interpola a f en los pintos $x_0,...,x_n,t$.Entoces
 
-Sea $P(x)$ el polinomio que interpola a $x_0,...,x_n$ y sea $Q(x)$ el polinomio que interpola $z_0,...,z_n$, como ambos
-interpolan a los mismos puntos, por unicidad
+$Q(x) = P(x) + f[x_0,...,x_n,t]\prod\limits_{\substack{i=0}}^{n} (t-x_i)$
 
-$P(x)=Q(x)$
-
-Sea
-
-$P(x) = a_0+a_1x+...+a_nx^n$
-
-$Q(x) = b_0+b_1x+...+b_nx^n$, entonces $a_i = b_i$, para cada $i=0,...,n$
-
-$a_n = f[x_0,...,f_n] $, por lo tanto 
-
-$P(x) = f[x_0]+ f[x_0,x_1](x-x_0)+...+f[x_0,...,x_n](x-x_0)...(x-x_{n-1})$
-
-Haciendo lo mismo con los $z_i$, entonces $f[x_0,...,x_n] = f[z_0,...,z_n]$ $\blacksquare$
+Como $Q(t) = f(t)$, obtenemos $f(t) - P(t) = f[x_0,...,x_n,t]\prod\limits_{\substack{i=0}}^{n} (t-x_i)$$\blacksquare$
 
 \vspace{10mm}
+
+
 
 \subsection{Relacion Diferencias Divididas con derivada n-ésima}\label{Relacion-DIf-Divididas-con-derivada-n-esima}
 
-$f[x_0,...,x_n] = \displaystyle\frac{1}{n!}f^{(n)}(\xi)$
+Si f es n veces continuamente diferenciable en (a,b) y $x_0,...,x_n$ nodos distintos en [a,b], entonces existe
+$\xi \in (a,b)$ tal que
 
-Dem:
-
-(1) teorema de error de interpolación
-
-Sea P(x) el polinomio que interpola a f(x) en $x_0,...,x_n$ y $sea x_n=t$, luego
+$f[x_0,...,x_n] = \displaystyle\frac{f^{(n)}(\xi)}{n!}$
 
 \vspace{5mm}
 
-$f(x_n)-P(x_n)=^{(1)}  \displaystyle\frac{f^{(n)}}{n!}(\xi) \prod\limits_{j=0}^{n-1}(x-x_j)=f[x_0,...,x_n]\prod\limits_{j=0}^{n-1}(x-x_j)$, entonces
+Dem:
 
-$\displaystyle\frac{f^{(n)}}{n!} =f[x_0,...,x_n] $ $\blacksquare$
+Sea P el polinomio de grado $\leq n-1$ que interpola a f en $x_0,...,x_{n-1}$.
+
+Por el teorema del error en el polinomio interpolante tenemos
+
+$f(x_n)-P(x_n) = \displaystyle\frac{f^{(n)}(\xi)}{n!} \prod\limits_{\substack{i=0}}^{n-1} (x_n-x_i)$ (A)
+
+\vspace{5mm}
+
+Por el teorema anterior
+
+$f(x_n)-P(x_n) = f[x_0,...,x_n]\prod\limits_{\substack{i=0}}^{n-1} (x_n-x_i)$ (B)
+
+\vspace{5mm}
+
+Por lo tanto de (A) y (B) se obtiene $f[x_0,...,x_n] = \displaystyle\frac{f^{(n)}(\xi)}{n!}$
+
+ $\blacksquare$
  
 
 \vspace{10mm}
 
 
 
-\subsection{Suavidad Spline cubico}\label{Suavidad-Spline-cubico}
+\subsection{Error en la interpolacion en un punto}\label{Suavidad-Spline-cubico}
 
-Sea $f$ una funcion tal que $f''\in C[a,b]$, y sea S una funcion spline cubico natural que interpola a f en $t_i$, con $a=t_0<...<t_n=b$, entonces
+Sea f definida en [a,b], n veces continuamente derivable en [a,b]. Sean $x_0,...,x_n \in [a,b]$ distintos, $y \in [a,b]$. Entonces
 
-$\displaystyle\int_{a}^{b}[S''(x)]^2dx \leq \displaystyle\int_{a}^{b}[f''(x)]^2dx$
+$\lim_{{(x_0,...,x_n)} \to {(y,...,y)}}f[x_0,...,x_n] = \frac{f^{(n)}(y)}{n!}$
+
+\vspace{5mm}
 
 Dem:
 
-Sea $g \equiv f - S$, notemos que:
+Sabemos que $\exists \xi \in (a,b)$ tal que
 
-$g(t_i) = f(t_i)-S(t_i) = Y_i - Y_i = 0$, con $i = 0,...,n$
+$f[x_0,...,x_n] = \frac{f^{(n)}(\xi)}{n!}$
 
-\vspace{5mm}
-
-Ahora $g''(x) = f''(x) - S''(x)$
-
-$g''(x) + S''(x) = f''(x)$
+Por ende si $(x_0,...,x_n) \to (y,...,y)$, entonces $\xi \to y$
 
 \vspace{5mm}
 
-$[g''(x) + S''(x)]^2 = [f''(x)]^2$
+Luego tomamos el limite:
 
-\vspace{5mm}
+$\lim_{{(x_0,...,x_n)} \to {(y,...,y)}}f[x_0,...,x_n] = \lim_{{(x_0,...,x_n)} \to {(y,...,y)}}\frac{f^{(n)}(\xi)}{n!} = \frac{f^{(n)}(y)}{n!} $
 
-$[g''(x)]^2 + 2g''(x)S''(x) + [S''(x)]^2 = [f''(x)]^2$, entonces
-
-\vspace{5mm}
-
-$\displaystyle\int_{a}^{b}[g''(x)]^2dx + 2 \displaystyle\int_{a}^{b}g''(x)S''(x)dx + \displaystyle\int_{a}^{b}[S''(x)]^2dx = \displaystyle\int_{a}^{b}[f''(x)]^2dx $
-
-Queremos ver que
-
-$\displaystyle\int_{a}^{b}g''(x)S''(x)dx \leq 0$
-
-Luego
-
-$\displaystyle\int_{a}^{b}g''S''dx = \sum\limits_{i=1}^n \displaystyle\int_{t_{i-1}}^{t_i}g''S''dx = \sum\limits_{i=1}^n (s''g'(t_i)-s''g'(t_{i-1}))- \displaystyle\int_{t_{i-1}}^{t_i}g'S''dx $
-
-\vspace{5mm}
-
-$=\sum\limits_{i=1}^n c_i- \displaystyle\int_{t_{i-1}}^{t_i}g'(x)dx = -\sum\limits_{i=1}^n c_i(g(t_i)-g(t_{i-1}))=0$$\blacksquare$
+$\blacksquare$
 
 \vspace{10mm}
+
+\subsection{Linealmente Indenpendiente}\label{LI}
+
+Si $\phi_j$ es un polinomio de grado j, $j = 0,...,n$, entonces $\{\phi_0,...,\phi_n\}$ es LI en cualquier intervalo [a,b]
+
+\vspace{5mm}
+
+Dem:
+
+Sean $C_0,...,C_n \in {\rm I\!R}$ tal que $P(x) = C_0\phi_0(x)+...+C_n\phi_n(x) = 0$, para cada $x \in [a,b]$.
+Queremos ver que $C_j = 0$, para $j = 0,...,n$. Como $P(x)$ se anula para cada $x \in [a,b]$, los coeficientes
+de cada potencia de x debe ser cero. En particular, el coeficiente de $x^n$ es cero. Como el único término que 
+$x^n$ es $C_n\phi_n(x)$, entonces $C_n = 0$. Luego
+
+$P(x) = C_0\phi_0(x)+...+C_{n-1}\phi_{n-1}(x)$. Repitiendo esto (n-1) veces obtenemos
+
+$C_1 = ... = C_n = 0$
+
+
+
+
+\vspace{10mm}
+
+
 
 \subsection{$A^tAx=A^tb\Leftrightarrow$  x minimiza cuadrados minimos}\label{Relacion-DIf-Divididas-con-derivada-n-esima}
 
@@ -825,8 +870,3 @@ $1 > \displaystyle\frac{ \sum\limits_{j>k}|a_{kj}|}{|a_{kk}|-\sum\limits_{j<k}|a
 \vspace{10mm}
 
 \end{document}
-
-Esta es la lista que me dieron:
-- Relacion DIf Divididas con derivada nesima
-- A^tAx=A^tb unica solucion <-> A rango completo
-
