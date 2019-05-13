@@ -70,6 +70,52 @@ $e_{n+1} = \frac{e_nf'(X_n)+f(X_n)}{f'(X_n)}$
 
 \vspace{5mm}
 
+\subsection{Diferencias Divididas}\label{Diferencias-Divididas}
+
+
+$f[x,x_1] =\frac{f(x)-f(x_0)}{x-x_0}$ Ademas $\lim_{x \to x_0}f[x_0,x] = f'(x_0)$
+
+\vspace{5mm}
+
+$a_0 = f[x_0] = f(x_0)$
+$a_k = f[x_0,...,x_k] = \frac{f[x_1,...,x_k]-f[x_0,...,x_{k-1}]}{x_k-x_0}$
+
+
+\vspace{5mm}
+
+\subsection{Splines}\label{Splines}
+
+Error : $|e(x)| \leq \frac{M}{8}(h)$, donde $M \geq f''(x) \forall x \in [x_0,x_1]$ y $f def en [x_0,x_1]$ y $h =x_1-x_0$
+
+
+\vspace{5mm}
+
+Splines Cubicos(condiciones):
+-Interpolación$S(x_j) = f(x_j)$
+
+-Continuidad de S $S_i(x_i) = S_{i+1}(x_i)$
+
+-Continuidad de S' $S_i'(x_i) = S'_{i+1}(x_i)$
+
+-Continuidad de S'' $S_i''(x_i) = S''_{i+1}(x_i)$
+
+\vspace{5mm}
+
+Ahora para saber si es spline con condiciones naturales:
+-$S''(x_0) = 0$, osea $0$ en los limites
+
+-$S''(x_n) = 0$
+
+\vspace{5mm}
+
+Spline con condiciones correctas
+
+-$S'(x_0) = P'(x_0)$
+-$S'(x_n) = P'(x_n)$
+\vspace{5mm}
+
+
+
 
 
 
