@@ -1,3 +1,6 @@
+using DelimitedFiles
+using Plots
+
 function ejer3a()
     xs = []
     ys = []
