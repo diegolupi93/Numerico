@@ -21,6 +21,6 @@ function ejer3a()
     puntos = 0.1:0.1:20
     funcion = map(x -> x*x , polyval(coeficientes, puntos))#devo multiplicar por x?
 
-    plot!(puntos,funcion)
+    plot(puntos,funcion)
     return 0
 end

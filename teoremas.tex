@@ -94,9 +94,42 @@ y $\displaystyle\int_{a}^{b}w(x)\phi_n(x)\phi_k(x)dx = 0$ con $k < n$
 
  \vspace{5mm}
 
+\subsection{Regla compuesta de simpson}\label{Simpson}
+
+Sean $f \in C^4[a,b]$, n par, $h = \frac{b-a}{n}$, $x_j = a+jh$, con $j=0,...,n$, entonces existe $\mu \in (a,b)$
+talque la regla compuesta de Simpson para n subintervalos puede escribirse
+
+ \vspace{5mm}
+
+ $\displaystyle\int_{a}^{b}f(x)dx = \frac{h}{3} \left[ f(a) + 2 \sum\limits_{j=1}^{\frac{n}{2}-1}f(x_{2j})
+ +4\sum\limits_{j=1}^{\frac{n}{2}}f(x_{2j}-1)+f(b) \right] - \frac{b-a}{180}h^4f^{(4)}(\mu)$
 
 
+ \vspace{5mm}
 
+ \subsection{Regla del trapecio compuesta}\label{Trapecio}
+
+Sean $f \in C^2[a,b]$, $h = \frac{b-a}{n}$, $x_j = a+jh$, con $j=0,...,n$, entonces existe $\mu \in (a,b)$
+talque la regla compuesta del Trapecio para n subintervalos puede escribirse
+
+ \vspace{5mm}
+
+$\displaystyle\int_{a}^{b}f(x)dx = \frac{h}{2} \left[ f(a) + 2 \sum\limits_{j=1}^{n-1}f(x_{j})
+ +f(b) \right] - \frac{b-a}{12}h^2f''(\mu)$
+
+\vspace{5mm}
+
+ \subsection{Regla del punto medio compuesta}\label{medio}
+
+Sean $f \in C^2[a,b]$, $, n par, h = \frac{b-a}{n+2}$, $x_j = a+(j+1)h$, con $j=-1,...,n+1$, entonces existe $\mu \in (a,b)$
+talque la regla del punto medio compuesta para $(n+2)$ subintervalos es:
+
+ \vspace{5mm}
+
+$\displaystyle\int_{a}^{b}f(x)dx = 2h \sum\limits_{j=0}^{\frac{n}{2}}f(x_{2j})
+ + \frac{b-a}{6}h^2f''(\mu)$
+
+\vspace{5mm}
 
 \section{Teoremas con demostracion}
 
@@ -588,282 +621,82 @@ $x^n$ es $C_n\phi_n(x)$, entonces $C_n = 0$. Luego
 
 $P(x) = C_0\phi_0(x)+...+C_{n-1}\phi_{n-1}(x)$. Repitiendo esto (n-1) veces obtenemos
 
-$C_1 = ... = C_n = 0$
+$C_1 = ... = C_n = 0$ $\blacksquare$
 
 
 
 
 \vspace{10mm}
 
+\subsection{Regla de cuadratura}\label{cuadratura}
+
+Supongamos que $x_1,...,x_n$ son las raices de los polinomios de Legendre $P_n(x)$ y que para cada
+$i = 1,...,n$ los coeficientes $c_i$ dados por
+
+$c_i = \displaystyle\int_{-1}^1 \prod\limits_{\substack{j = 1\\
+                  j \not= i}}^n 
+                  \frac{x-x_j}{x_i-x_j}dx$
+
+Si P(x) es un polinomio cualquiera de grado $\leq 2n-1$, entonces
+
+$\displaystyle\int_{-1}^1P(x) dx = \sum\limits_{i=1}^n c_i P(x_i)$
+
+Esto dice que la regla de cuadratura integra exactamente a polinomios con grado $\leq 2n-1$, con n puntos
+(las n raices de $P_n(x)$)
 
 
-\subsection{$A^tAx=A^tb\Leftrightarrow$  x minimiza cuadrados minimos}\label{Relacion-DIf-Divididas-con-derivada-n-esima}
-
-Sea $A \in  {\rm I\!R}^{nxm}$, $x \in {\rm I\!R}^{m}$ con $m \leq n$ es solución del problema de cuadrados mínimos si y solo si
-
-$A^TAx = A^Tb$ para algun $b \in {\rm I\!R}^{m}$, Ademas si A tiene rango pmpleto, la solución x es única.
+\vspace{5mm}
 
 Dem:
 
-Probemos primero $\Rightarrow$)
+Consideraremos 2 casos
 
-Si x es solución del problema de cuadrados minimos debemos ver que resuelve el sistema $A^TAx = A^Tb$, para algún b
+(1) $gr(P)\leq n-1$ y (2) $gr(P) \leq 2n-1$
 
-Por hipotesis $||b - Ax||^2 \leq ||b-Ay||^2$, para todo$y \in {\rm I\!R}^m$
+Caso (1): $gr(P)\leq n-1$
 
-Sea $y = x+ tz$ con $z \in {\rm I\!R}^m$, entonces
+Reescribiremos $P(x)$, usando $x_1,...,x_n$, como un polinomio interpolante de
+lagrange, con nodos en las raices de $P_n(x)$ (n raices $=$ n nodos de interpolación)
 
-\vspace{5mm}
-
-$||b - Ax||^2 \leq ||b-Ay||^2 =||b-A(x+ tz))||^2 = ||b- Ax - Atz))||^2 $, entonces obtenemos
-
-\vspace{5mm}
-
-$0 \leq -2t\langle b-Ax, Az \rangle + t^2||Az||^2$
+Esta representación es exacta pues el término del error tiene derivada de orden (n+1)
+y $f=P_n$ que tiene grado n. Tambien esta representación es $\underline{exacta}$ por unicidad del polinomio interpolante
 
 \vspace{5mm}
 
-$2t\langle b-Ax, Az \rangle \leq t^2||Az||^2 $, ahora
+$\displaystyle\int_{-1}^1 P(x) dx = \displaystyle\int_{-1}^1 \sum\limits_{i=1}^n P(x_i) 
+                 \prod\limits_{\substack{j = 1\\ j \not= i}}^n \frac{x-x_j}{x_i-x_j}dx  
+                 = \sum\limits_{i=1}^n P(x_i) \displaystyle\int_{-1}^1 
+                 \prod\limits_{\substack{j = 1\\ j \not= i}}^n \frac{x-x_j}{x_i-x_j}dx$
+
+$= \sum\limits_{i = 1}^n P(x_i)c_i $ prueba de caso (1)
 
 \vspace{5mm}
 
-Si $t > 0$
+Caso (2) $n \leq gr(P) \leq 2n-1$
 
-$2\langle b-Ax, Az \rangle \leq t||Az||^2$
+Dividimos $P(x)$ por $P_n(x)$. Por el algoritmo de la división existen 2 polinomios $Q(x) y R(x)$ tal que
 
-si $t<0$
+$P(x) = P_n(x) Q(x) + R(x)$ donde $0 \leq gr(Q) \leq n-1$ y $gr(R) \leq n-1$
 
-$t||Az||^2 \leq 2\langle b-Ax, Az \rangle$, por ende si tomo el limite de ambos lados
+ \vspace{5mm}
 
-\vspace{5mm}
+ $\displaystyle\int_{-1}^1 P(x) dx = \displaystyle\int_{-1}^1 P_n(x)Q(x) dx + \displaystyle\int_{-1}^1 R(x) dx$
 
-$\langle b-Ax, Az \rangle = 0$, luego
+ Como $0 \leq gr(Q) \leq n-1$ por propiedad (2) de polinomio ortogonal de Legendre tenemos
 
-$0 = (Az)^T(b-Ax)=z^TA^T(b-Ax)=z^T(A^Tb-A^TAx)$, entonces
+$\displaystyle\int_{-1}^1 P(x) dx = 0$ como $gr(R) \leq n-1$
 
-$A^T-A^TAx=0$, por lo tanto $A^TAx=A^Tb$
+Por caso (1) $\displaystyle\int_{-1}^1 R(x) dx = \sum\limits_{i=1}^n c_i R(x_i)$
 
-\vspace{5mm}
+ \vspace{5mm}
 
-$\Leftarrow$)Probemos que si $\bar{x}$ es solución de $A^TAx=A^Tb$ entonces es minimizador de $||b-Ax||$
+ Reescribiendo R(x), como un polinomio interpolante basado en $x_1,...,x_n$. Ademas $x_1,...,x_n$ son raices de $P_n(x)$
 
-Quiero ver que $||b-A\bar{x}||^2 \leq ||b-Ax||$, para todo $x \in {\rm I\!R}^m$
+ $P(x_i) = P_n(x_i)Q(x_i) + R(x_i) = P(x_i)$, con $i = 1,...,n$
 
-\vspace{5mm}
+ Luego reemplazamos $R(x_i)$ por $P(x_i)$ y obtenemos
 
-$||Ax-b||^2= ||Ax-A\bar{x}+A\bar{x}-b||^2=||Ax-A\bar{x}||^2+2\langle Ax-A\bar{x}, A\bar{x}-b \rangle+||A\bar{x}-b||^2$
-
-\vspace{5mm}
-
-Veamos que $0 \leq \langle Ax-A\bar{x}, A\bar{x}-b \rangle$
-
-\vspace{5mm}
-
-$\langle A(x-\bar{x}), A\bar{x}-b \rangle = \langle A\bar{x}-b , A(x-\bar{x})\rangle =  (A(x-\bar{x}))^T (A\bar{x}-b) $
-
-\vspace{5mm}
-
-$(x-\bar{x})^TA^T (A\bar{x}-b) = (x-\bar{x})^T (A^TA\bar{x}-A^Tb) = 0$, por lo tanto
-
-\vspace{5mm}
-
-$||A\bar{x}||^2 \leq ||Ax-b||^2$, para todo $x \in {\rm I\!R}^m$ $\blacksquare$
-
-
-\vspace{10mm}
-
-\subsection{$A^tAx=A^tb$unica solucion$\Leftrightarrow$  A rango completo}\label{Relacion-DIf-Divididas-con-derivada-n-esima}
-
-Preguntar$\blacksquare$
-
-\vspace{10mm}
-
-\subsection{Error trapecio integracion numerica}\label{Error-trapecio-integracion-numerica}
-
-Error trapecio $= - f''(\xi)\displaystyle\frac{(b-a)^3}{12}$
-
-Dem:
-
-(1) Error de interpolación
-
-(2)Teorema de valor intermedio para integrales
-
-$f(x)-P(x) =^{(1)} \displaystyle\frac{1}{2!}f''(\xi_x)(x-a)(x-b) $, donde $\xi_x \in [a,b]$
-
-Ahora
-
-$\displaystyle\int_{a}^{b}f(x)-P(x)dx =  \displaystyle\frac{1}{2!}\displaystyle\int_{a}^{b}f''(\xi_x)(x-a)(x-b)dx$
-
-$=^{(2)}\displaystyle\frac{1}{2!}f''(\xi_x)\displaystyle\int_{a}^{b}(x-a)(x-b)dx
-=-f''(\xi)\displaystyle\frac{(b-a)^3}{12}$ $\blacksquare$
-
-
-\vspace{10mm}
-
-\subsection{Error simpson integracion numerica}\label{Error-simpson-integracion-numerica}
-
-Error simpson $= - \displaystyle\frac{(b-a)^5}{90} f^{(4)}(\xi)$
-
-Dem:
-
-El termino de error en la regla de simpson se puede establecer usando la serie de Taylor
-
-$f(a+h) = f + hf' + \displaystyle\frac{1}{2!}h^2f''+... $, luego por sustitucion obtenemos
-
-\vspace{5mm}
-
-$f(a+2h) = f + 2hf' + \displaystyle\frac{1}{2!}2h^2f''+...$, con estas 2 series se obtiene
-
-\vspace{5mm}
-
-$f(a)+4f(a+h)+f(a+2h)=6f+6hf'+4h^2f''+...$, y asi tenemos
-
-\vspace{5mm}
-
-$\displaystyle\frac{h}{3}[f(a)+4f(a+h)+f(a+2h)]=2hf+2h^2f'+\displaystyle\frac{4}{3}h^3f''+...$, luego por serie de Taylor
-
-\vspace{5mm}
-
-$F(a+2h) = F(a)+2hF'(a)+2h^2F''(a)+...$
-
-\vspace{5mm}
-
-Sea $F(x) = \displaystyle\int_{a}^{x}f(t)dt$, por el teorema fundamenta del calculo, $F'=f$, obtenemos
-
-\vspace{5mm}
-
-$\displaystyle\int_{a}^{a+2h}f(x)dx=2hf+2h^2f'+\displaystyle\frac{4}{3}h^3f''+...$, luego
-
-\vspace{5mm}
-
-$\displaystyle\int_{a}^{b}f(x)dx \approx \displaystyle\frac{(b-a)}{6}\left[f(a)+4f\left(\displaystyle\frac{a+b}{2} \right)+f(b) \right]$, con el termino de error
-
-\vspace{5mm}
-
-$-\displaystyle\frac{1}{90} \left( \displaystyle\frac{b-a}{2} \right)^5 f^{(4)}(\xi)$, para algun $\xi$ en (a,b), ya que
-
-\vspace{5mm}
-
-$\mathcal{O}(h^5) = - \displaystyle\frac{h^5}{90}f^{(4)}(\xi)$$\blacksquare$
-
-
-
-
-\vspace{10mm}
-
-\subsection{Teorema Regla Cuadratura gaussiana}\label{T.-Auxiliar-Cuadratura-gaussiana}
-
-Sea $w(x)>0$,$q(x)$ un polinomio distinto de cero yde grado n+1 que es ortogonal a $\prod_{n}$, esto es
-
-$\displaystyle\int_{a}^{b}q(x)p(x)w(x)dx = 0$, para todo $p \in \prod_{n}$,
-
-si $x_0,...,x_n$ son los ceros de $q(x)$, entonces $\displaystyle\int_{a}^{b}f(x)w(x)dx$ es exacto para $\prod_{2n+1}$
-
-Dem:
-
-Sea $f \in \prod_{2n+1}$, con
-
-\vspace{5mm}
-
-$f \equiv qP+r$, con $P,r \in \prod_{2n+1}$, luego
-
-\vspace{5mm}
-
-$f(x_i) = q(x_i)P(x_i)+r(x_i)=r(x_i)$, ya que $q(x_i)=0$
-
-\vspace{5mm}
-
-Por lo tanto
-
-$\displaystyle\int_{a}^{b}f(x)w(x)dx=\displaystyle\int_{a}^{b}(q(x)P(x)+r(x))w(x)dx=\displaystyle\int_{a}^{b}r(x)w(x)dx=\sum\limits_{i=0}^{n}r(x_i)A_i=\sum\limits_{i=0}^{n}f(x_i)A_i$$\blacksquare$
-
-\vspace{10mm}
-
-
-
-
-
-\subsection{Teorema de numeros de cambio de signo int numerica}\label{T.-Auxiliar-Cuadratura-gaussiana}
-
-Sea $w(x)>0$, sea f distinta de cero y continua en $a=t_0<...<t_n=b$, donde P es w-ortogonal a $\prod_{n}$, entonces
-f cambia de signo n+1 veces en el (a,b)
-
-Dem:
-
-Veamos que existe un cambio de signo en el (a,b), sabemos que $1 \in \prod_{n}$, luego
-
-$\displaystyle\int_{a}^{b} f(x)w(x)dx = 0$, entonces f tiene al menos un cero en (a,b).
-
-Ahora veamos que hay n+1 cambios de signo
-
-Supongamos que hay $r \leq n$ cambios de signo y sean $t_0,...,t_{r+1}$ donde ocurre un cambio de signo, luego
-
-f tiene un signo $[t_0,t_1)$
-
-f tiene un signo $(t_1,t_2)$
-
-.
-
-.
-
-.
-
-f tiene un signo $[t_r,t_{r+1})$
-
-Ahora, sea
-
-$P(x)= \prod\limits_{i=1}^{r}(x-t_i) $, entoces $gr(P) \leq r \leq n$
-
-Como P(x) cambia de signo en los mismos intervalos que f, tiene los mismos signos, luego
-
-$\displaystyle\int_{a}^{b} f(x)P(x)w(x)dx \not= 0$, absurdo, pues f es ortogonal a P por hipotesis
-
-por lo tanto $\displaystyle\int_{a}^{b}f(x)P(x)w(x)dx = 0$, por lo tanto $n+1 \leq r$$\blacksquare$
-
-
-\vspace{10mm}
-
-
-
-
-
-\subsection{Convergencia de Gauss Seidel}\label{Convergencia-de-Gauss-Seidel}
-
-Si A tiene dominio diagonal, entonces los metodos  de Gauss-Seidel converge
-
-Dem:
-
-Sea $\delta(I-Q^{-1}A)<1$, sea x un autovector de autovalor $\lambda$ y $||x||_\infty=1$, entonces
-
-$(I-Q^{-1}A)x = \lambda x$ ó $Qx-Ax = \lambda Qx$, luego
-
-$-Ux = \lambda Qx$
-
-$-\sum\limits_{j \not= i+1}^{n}a_{ij}x_j = \lambda \sum\limits_{j=1}^{i}a_{ij}x_j = \lambda a_{ii}+\lambda \sum\limits_{j=1}^{i-1}a_{ij}x_j$, con $1 \leq i \leq n$
-
-$\lambda a_{ii}x_i = -\sum\limits_{j=i+1}^{n}a_{ij}x_j-\lambda\sum\limits_{j=1}^{i-1}a_{ij}x_j$
-
-Sea k tal que $|x_\ell| \leq |x_k|=1$, para todo $\ell$, luego sea $i=k$
-
-\vspace{5mm}
-
-$|\lambda||a_{kk}| \leq \sum\limits|a_{kj}|+|\lambda|\sum\limits_{j=1}^{k-1}|a_{kj}|$, por lo tanto
-
-$|\lambda| \leq \displaystyle\frac{\sum\limits_{j=k+1}^{n}|a_{kj}|}{(|a_{kk}|-\sum\limits_{j=1}^{k-1}|a_{kj}|)} < 1$
-
-Entonces $\delta(I-Q^{-1}A)<1$, veamos que Gauss-Seidel converge
-
-\vspace{5mm}
-
-$|a_{kk}| > \sum\limits_{j<k}|a_{kj}|+\sum\limits_{j>k}|a_{kj}|$, luego
-
-\vspace{5mm}
-
-$|a_{kk}|-\sum\limits_{j<k}|a_{kj}| > \sum\limits_{j>k}|a_{kj}|$
-
-\vspace{5mm}
-
-$1 > \displaystyle\frac{ \sum\limits_{j>k}|a_{kj}|}{|a_{kk}|-\sum\limits_{j<k}|a_{kj}|} $, por lo tanto converge$\blacksquare$
+ $\displaystyle\int_{-1}^1 P(x) dx = \sum\limits_{i=1}^n c_i P(x_i)$ $\blacksquare$
 
 
 
