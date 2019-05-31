@@ -1,12 +1,13 @@
 using DelimitedFiles
-import Pkg; Pkg.add("Polynomials")
+using Plots
 using Polynomials
-function eje1()
+function eje()
 	xs = LinRange(0,1,50)
+    result = []
 	# dispercion normal de cuanto?
 	ys = map(x -> asin(x) , xs)# ys = [f(xs[i])] con i = 1,....,length(xs)
-	plot(xs,ys)
-   
+	#plot(xs,ys)
+    append!(result,[xs,ys])
 	#preguntar
     puntos = 0:0.01:1
 
@@ -14,9 +15,21 @@ function eje1()
     for i in 1:5
         coeficientes = polyfit(xs,ys,i)
         funcion = polyval(coeficientes, puntos)
-        plot!(puntos,funcion)
+        #plot!(puntos,funcion)#preguntar porq no grafica los plots
+        append!(result,[puntos,funcion])
     end
 	
-	return 0
+	return result
 
 end
+
+result = eje()
+plot(result[1],result[2], label="Recta")
+global i = 3
+while (i < length(result))#preguntar porq no plotea
+    plot!(result[i], result[i+1], label="Ajuste")
+    global i = i + 2
+end
+
+
+

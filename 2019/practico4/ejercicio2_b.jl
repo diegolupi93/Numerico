@@ -1,5 +1,5 @@
 using DelimitedFiles
-import Pkg; Pkg.add("Polynomials")
+
 using Polynomials
 function eje1()
 	xs = LinRange(0,pi*4,50)
@@ -14,7 +14,7 @@ function eje1()
     for i in 1:5
         coeficientes = polyfit(xs,ys,i)
         funcion = polyval(coeficientes, puntos)
-        plot!(puntos,funcion)
+        plot!(puntos,funcion,label="Ajuste")
     end
 	
 	return 0
