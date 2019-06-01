@@ -1,6 +1,7 @@
 using DelimitedFiles
-import Pkg; Pkg.add("Polynomials")
+#import Pkg; Pkg.add("Polynomials")
 using Polynomials
+using Plots
 function eje1()
 	xs = LinRange(0,10,20)
 	# dispercion normal de cuanto?
@@ -12,11 +13,12 @@ function eje1()
 	puntos = 0:0.1:10
     funcion = polyval(coeficientes, puntos)
 	# falta graficar los [xs,ys] y la [puntos,function]
-	plot(xs,ys)
-	#secundario
-    puntos = 0:0.1:5
-    funcion = polyval(coeficientes, puntos)
-    plot!(puntos,funcion)
-	return 0
+	#plot(xs,ys)
+    #plot!(puntos,funcion)
+	return [xs,ys],[puntos,funcion]
 
 end
+
+list_a, list_b = eje1()
+plot(list_a[1],list_a[2], label="Recta") 
+plot!(list_b[1],list_b[2],label="Ajuste obtenido")
