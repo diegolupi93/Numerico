@@ -1,5 +1,6 @@
 using DelimitedFiles
 using Plots
+using Polynomials
 
 function ejer3a()
     xs = []
@@ -7,23 +8,22 @@ function ejer3a()
 
     # load datos
     x = readdlm("datos3a.dat", '\t', Float64, '\n')
-    n = Int(length(x)/2)
-    for i in 1:n
-        append!(xs, x[i])
-        append!(ys, x[n+i])
-    end
+    xs = x[:,1]
+    ys = x[:,2]
     # Graficar los datos y el ajuste obtenido.
-    plot(xs,ys)
+    plot(xs,ys, seriestype=:scatter, label= "funcion")
 
-    ln_x = map(x -> exp(x), xs)
-    ln_y = map(x -> exp(x), ys)
-    # ya que y =C*x^A  <==> ln(y) = ln(C*x^A)  <==> ln(C) + A*ln(x)
+    ln_x = log.(xs)
+    ln_y = log.(ys)
+    # ya que y =C*x^A  <==> ln(y) = ln(C*x^A)  <==> ln(C) + A*ln(x) = ln(y)
     # ajuste lineal.
     coeficientes = polyfit(ln_x, ln_y, 1)
 
-    puntos = 1:0.01:5
-    funcion = map(x -> exp(x) , polyval(coeficientes, puntos))#exp(ln(y))= y
+    puntos = LinRange(1,5,1000)
+    b = coeficientes.a[1]
+    a = coeficientes.a[2]
+    b = exp(b)
+    f(x) = b*x^a
+    plot!(puntos, f.(puntos), label="Ajuste obtenido")
 
-    plot!(puntos,funcion)
-    return 0
 end

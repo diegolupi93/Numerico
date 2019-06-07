@@ -7,15 +7,16 @@ function egauss(A,b)
 		error("La matriz es singular")
 	end
 
-	for (k=1:n-1)
-		
-		j = k+1:n
-		v = A(j,k)/A(k,k)
-		A(j,k) = 0
-		A(j,j) = A(j,j)-v*A(k,j)
-		b(j) = b(j) - (v * b(k))
+	for k in 1:n-1
+        for i in k+1:n
+            z = A[i,k]/A[k,k]
+            for j in k+1:n
+                A[i,j] = A[i, j] - z*A[k,j]
+            end
+            b[i] = b[i] - z*b[k]
+        end 
 	end
 	U = A
 	y = b
-	return [U,y]
+	return U, y
 end
