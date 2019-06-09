@@ -1,31 +1,42 @@
+include("ejercicio_1.jl")
 function a(x)
-	return x*exp(-x), exp(-x)*(x-2), exp(-x)*(x-4) # retorna la funcion, derivada segunda y derivada cuarta
+	return x*exp(-x)  # retorna la funcion de la integral, y la integral resuelta
 end
 
-#agregar las otras funciones
+function b(x)
+	return (1+x^2)^(3/2)  # retorna la funcion de la integral, y la integral resuelta es aprox
+end
 
-function ejer4(funciones, err, I)
+function c(x)
+	return x*sin(x)  # retorna la funcion de la integral, y la integral resuelta 
+end
+
+#falta el d
+
+
+function ejer4(funciones, valor_integrales, err, I)
 	a = I[1]
 	b = I[2]
 	for i in 1:length(funciones)
 		e = Inf
 		N = 1
 		while e > err 
-			h = (b-a)/N
-			e = max(abs(((b-a)/180*h^4*funciones[i](a)[3])), abs(((b-a)/180*h^4*funciones[i](b)[3]))) # supongo el maximo en los extremos
+			simpson = intenumcomp(funciones[i],a,b,N,"simpson")
+			e = abs(simpson - valor_integrales[i])
+			println(e)
 			N += 1
 		end
-		println("El numero de intervalos que debe tener simpson para la", i, "-ésima funcion es: ", N)
+		println("El numero de intervalos que debe tener simpson para la", i, "-ésima funcion es: ", N-1)
 		e = Inf
 		N = 1
 		while e > err
-			h = (b-a)/N
-			e = max(abs(-((b-a)/12*h^2*funciones[i](a)[2])), abs(-((b-a)/12*h^2*funciones[i](b)[2]))) # supongo el maximo en los extremos
+			trapecio = intenumcomp(funciones[i],a,b,N,"trapecio")
+			e = abs(trapecio- valor_integrales[3])
 			N += 1
 		end
-		println("El numero de intervalos que debe tener Trapecio para la", i, "-ésima funcion es: ", N)
+		println("El numero de intervalos que debe tener Trapecio para la", i, "-ésima funcion es: ", N-1)
 	end
 
 end
 
-ejer4([a], 10^-5, [0,1])
+ejer4([a,b,c], [-1-2*exp(-1), 1.567951962208787, sin(1)-cos(1)], 10^-5, [0,1])

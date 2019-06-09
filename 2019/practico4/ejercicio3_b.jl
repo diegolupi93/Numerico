@@ -1,26 +1,29 @@
+using DelimitedFiles
+using Plots
+using Polynomials
+
 function ejer3a()
     xs = []
     ys = []
 
     # load datos
     x = readdlm("datos3b.dat", '\t', Float64, '\n')
-    n = Int(length(x)/2)
-    for i in 1:n
-        append!(xs, x[i])
-        append!(ys, x[n+i])
-    end
+    xs = x[:,1]
+    ys = x[:,2]
     # Graficar los datos y el ajuste obtenido.
-    plot(xs,ys)
-
-    xs_tilde = map(x -> 1/x, xs)
-    ys_tilde = map(x -> 1/x, ys)#devo dividir por x?
+    plot(xs, ys, seriestype=:scatter, label= "funcion")
+    f(x) = 1/x
+    x_tilde = f.(xs)
+    y_tilde = f.(ys)
 
     # ajuste lineal.
-    coeficientes = polyfit(xs_tilde, ys_tilde, 1)
+    coeficientes = polyfit(x_tilde, y_tilde, 1)
+    b = coeficientes.a[1]
+    a = coeficientes.a[2]
+    a = 1/a
+    b = 1/b 
+    q(x) = x/(a*x + b)
+    puntos = LinRange(1,20,1000) 
 
-    puntos = 0.1:0.1:20
-    funcion = map(x -> x*x , polyval(coeficientes, puntos))#devo multiplicar por x?
-
-    plot!(puntos,funcion)
-    return 0
+    plot!(puntos, q.(puntos), label="Ajuste obtenido")
 end

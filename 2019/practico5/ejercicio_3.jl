@@ -2,16 +2,16 @@ include("ejercicio_1.jl")
 
 function senint(x)
     y = []
-
+    f(x) = cos(x)
     for i=1:length(x)
         cant_puntos = x(i)/0.1
-        append!(y, intenumcomp(@fun3, 0, x(i), cant_puntos,"trapecio"))
+        append!(y, intenumcomp(f, 0, x(i), cant_puntos,"trapecio"))
     for
 
-    puntos = 0:0.05:2*pi
-    seno = map(x -> sin(x) ,puntos)
+    
+    seno = sin.(x)
 
-    plot(puntos, seno, label="Seno")
+    plot(x, seno, label="Seno")
     
 
     plot!(x,y,label="Ajuste")

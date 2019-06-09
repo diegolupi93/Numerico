@@ -1,22 +1,22 @@
-using DelimitedFiles
-
+using Plots
 using Polynomials
-function eje1()
-	xs = LinRange(0,pi*4,50)
-	# dispercion normal de cuanto?
-	ys = map(x -> cos(x) , xs)# ys = [f(xs[i])] con i = 1,....,length(xs)
-	plot(xs,ys)
-   
-	#preguntar
-    puntos = 0:0.01:1
 
-    # ajuste  polinomial.
-    for i in 1:5
-        coeficientes = polyfit(xs,ys,i)
-        funcion = polyval(coeficientes, puntos)
-        plot!(puntos,funcion,label="Ajuste")
-    end
-	
-	return 0
 
+global x = LinRange(0,1,50)
+global y = cos.(x)
+
+function ajuste(x, grado)
+
+    ymap = zeros(0)
+
+    poly = polyfit(x, y, grado)
+    append!(ymap,polyval(poly, x))
+
+    return ymap
+
+end
+
+for j = 1:5
+    sumres = sum(y-(ajuste(x, j)))
+    println("Suma residuo grado ", j,": ", sumres)
 end

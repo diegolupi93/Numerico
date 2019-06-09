@@ -1,3 +1,4 @@
+using Plots
 include("inewton.jl")
 
 function fun(x)
@@ -5,19 +6,17 @@ function fun(x)
 end
 
 function eje_3(fun)
-    z = []
     x = []
     y = []
-    C = 24/25 #LinRange(1,5,101)
-    for i in 1:101
-        append!(z, C+i/25)
-    end
+    z = LinRange(1,5,101)
     for i in 1:5
         append!(x,i)
         append!(y,fun(i))
     end
-    return inewton(x,y,z), y, z
+    return inewton(x,y,z),x, y, z
 end
 
-pol, f, z = eje_3(fun)
+pol, x, f, z = eje_3(fun)
+plot(x, f, seriestype=:scatter, label= "funcion")
+plot!(z, pol,  label= "Polinomio")
 

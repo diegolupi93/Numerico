@@ -41,5 +41,5 @@ function soltrinf(A, b)
 end
 
 
-x = soltrinf([1 0 0; 2 1 0; 2 3 1], [5;2;4]);
-println(x)
+x = soltrinf([1, 0, 0; 2, 1, 0; 2, 3, 1], [5;2;4]);
+
