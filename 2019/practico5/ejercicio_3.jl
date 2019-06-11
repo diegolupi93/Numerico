@@ -1,17 +1,17 @@
+using Plots
 include("ejercicio_1.jl")
 
 function senint(x)
     y = []
-    f(x) = cos(x)
-    for i=1:length(x)
-        cant_puntos = x(i)/0.1
-        append!(y, intenumcomp(f, 0, x(i), cant_puntos,"trapecio"))
-    for
-
+    for i in 1:length(x)
+        cant_puntos = x[i]/0.1
+        aux = intenumcomp(cos, 0, x[i], trunc(Int,cant_puntos),"trapecio")
+        append!(y, aux)
+    end
     
     seno = sin.(x)
 
-    plot(x, seno, label="Seno")
+    plot(x, seno, seriestype=:scatter,  label="Seno")
     
 
     plot!(x,y,label="Ajuste")

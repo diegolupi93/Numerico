@@ -2,7 +2,7 @@ using Plots
 using Polynomials
 
 
-global x = LinRange(0,1,50)
+global x = LinRange(0,4*pi,50)
 global y = cos.(x)
 
 function ajuste(x, grado)

@@ -1,5 +1,6 @@
 using Plots
 include("ilagrange.jl")
+
 function fun(x)
     return 1/(1+25*x^2)
 end
@@ -19,7 +20,6 @@ function eje_3(fun)
 		result = ilagrange(x, y, z);
 		plot(z,result,title="f",label=["tan(x)-2x" ""],lw=3)
 		plot!(z,funa,title="p",label=["raiz_cuadrada(3)" ""],lw=3)
-		gr()
 	end
 end
 
