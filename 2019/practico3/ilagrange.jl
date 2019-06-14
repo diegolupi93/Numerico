@@ -17,9 +17,8 @@ function sumatoria(x, y, z_i, n)
             end
         end
         sum += prod*y[i]
-        append!(suma,sum)  
     end
-    return suma
+    return sum
 end
 
 function ilagrange(x,y,z)
