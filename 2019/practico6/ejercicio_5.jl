@@ -9,7 +9,7 @@ function jacobi(A,b,e,mit)
 	        s=0;
 	        for j in 1:n
 	            if j!=i
-	                s += A[i,j] * x[j] # esa a es la unica diferencia con gauss seidel
+	                s += A[i,j] * xa[j] # esa a es la unica diferencia con gauss seidel
 	            end
 	        end
 	        x[i] = (b[i] - s)/A[i,i]
@@ -31,9 +31,12 @@ function gseidel(A,b,e,mit)
 	    for i in 1:n
 	        s=0;
 	        for j in 1:n
-	            if j!=i
-	                s += A[i,j] * xa[j] # esa a es la unica diferencia con jacobi 
+	            if j < i
+	                s += A[i,j] * x[j] 
 	            end
+	           	if j > i
+	           		s += A[i,j] * xa[j]
+	           	end
 	        end
 	        x[i] = (b[i] - s)/A[i,i]
 	        if norm((x-xa),Inf) < e
