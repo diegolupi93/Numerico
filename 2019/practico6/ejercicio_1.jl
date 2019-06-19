@@ -8,17 +8,18 @@ function soltrsup(A, b)
 	end
 	
 	n = length(b)
-	x = zeros(n)
+	x = b
 	x[n] = b[n]/A[n,n]
 	for k in n-1:-1:1
-		suma = 0
-	    for j in k+1:n
-    		suma += A[k,j]*x[j] 
+	    for j in 1:k-1
+    		x[j] = x[j] - A[j,n]*x[n]
     	end
-    	x[k] = (b[k]-suma)/A[k,k]
+    	x[k] = (x[k]-A[k,n]*x[n])/A[k,k]
+    	n = n -1
 	end
 	return x
 end
+
 
 function soltrinf(A, b)
     #para matrices triangulares superiores
@@ -28,18 +29,13 @@ function soltrinf(A, b)
 	end
 	
 	n = length(b)
-	x = zeros(n)
+	x = b
 	x[1] = b[1]/A[1,1]
 	for k in 2:n
-		suma = 0
-	    for j in 1:k-1
-    		suma += A[k,j]*x[j] 
+	    for j in k+1:n
+    		x[j] = x[j] - A[j,k-1]*x[k-1]
     	end
-    	x[k] = (b[k]-suma)/A[k,k]
+    	x[k] = (x[k]-A[k,k-1]*x[k-1])/A[k,k]
 	end
 	return x
 end
-
-
-x = soltrinf([1, 0, 0; 2, 1, 0; 2, 3, 1], [5;2;4]);
-
